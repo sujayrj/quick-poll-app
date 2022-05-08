@@ -15,11 +15,13 @@ public class Poll {
     private Integer id;
 
     @Column(name = "QUESTION")
+    @NotEmpty
     private String question;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "POLL_ID")
     @OrderBy
+    @Size(min = 2, max = 6)
     private List<Option> options;
 
     public Poll() {

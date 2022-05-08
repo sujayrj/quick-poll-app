@@ -1,21 +1,28 @@
 package com.jeppu.dto.error;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 public class ErrorDetail {
     private String title;
     private int status;
     private String detail;
-    private long timestamp;
+    private long timeStamp;
     private String developerMessage;
+
+    private Map<String, List<ValidateError>> errors = new LinkedHashMap<>();
 
     public ErrorDetail() {
     }
 
-    public ErrorDetail(String title, int status, String detail, long timestamp, String developerMessage) {
+    public ErrorDetail(String title, int status, String detail, long timeStamp, String developerMessage, Map<String, List<ValidateError>> fieldErrors) {
         this.title = title;
         this.status = status;
         this.detail = detail;
-        this.timestamp = timestamp;
+        this.timeStamp = timeStamp;
         this.developerMessage = developerMessage;
+        this.errors = fieldErrors;
     }
 
     public String getTitle() {
@@ -42,12 +49,12 @@ public class ErrorDetail {
         this.detail = detail;
     }
 
-    public long getTimestamp() {
-        return timestamp;
+    public long getTimeStamp() {
+        return timeStamp;
     }
 
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
+    public void setTimeStamp(long timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
     public String getDeveloperMessage() {
@@ -56,5 +63,13 @@ public class ErrorDetail {
 
     public void setDeveloperMessage(String developerMessage) {
         this.developerMessage = developerMessage;
+    }
+
+    public Map<String, List<ValidateError>> getErrors() {
+        return errors;
+    }
+
+    public void setErrors(Map<String, List<ValidateError>> errors) {
+        this.errors = errors;
     }
 }

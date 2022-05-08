@@ -30,7 +30,7 @@ public class PollController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> createPoll(@RequestBody Poll poll) {
+    public ResponseEntity<?> createPoll(@Valid @RequestBody Poll poll) {
         Poll savedPoll = pollRepository.save(poll);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentContextPath()
